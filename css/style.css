@@ -1,0 +1,252 @@
+/* CSS variables for color */
+:root {
+	--gray: #444044;
+    --black: #1d1d1f;
+    --dark: #2b292b;
+}
+/* Style for the body element */
+body {
+	margin: 0;
+	padding: 0;
+	background: radial-gradient(#000000 20%, #2f1e34);
+	overflow: hidden;
+       /* Center and stretch content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 100vw;
+    height: 100vh;
+}
+/* Apply box-sizing to all elements */
+body *, *:before{
+	position: absolute;
+}
+
+/* Main bat-cat container styling */
+.bat-cat {
+    width: 80vmin;
+    height: 40vmin;
+    animation: fly 3s linear 0s infinite;
+}
+/* Keyframes for bat-cat flying animation */
+@keyframes fly {
+    20% { transform: translateX(-1vmin); }
+    40% { margin-top: -1vmin; }
+    60% { margin-top: 1vmin; }
+    80% { transform: translateX(1vmin); }
+}
+/* CSS for the bat's body */
+.bat-body {
+    width: 20vmin;
+    height: 20vmin;
+    background: var(--black);
+    border-radius: 1vmin 100%;
+    top: 15vmin;
+    left: 30vmin;
+    transform: rotate(45deg);
+    box-shadow: 1vmin -0.15vmin 0 0 var(--gray) inset;
+    z-index: 2;
+    transition: all 1s ease 0s;
+}
+/* CSS for the bat's head */
+.bat-head {
+    width: 14vmin;
+    height: 13vmin;
+    background: var(--black);
+    border-radius: 95%;
+    top: 7.25vmin;
+    left: 33vmin;
+    box-shadow: 1.2vmin 0.5vmin 0 0 inset var(--gray);
+    z-index: 2;
+}
+
+.bat-head:before,
+.bat-head:after {
+    content: "";
+    position: absolute;
+    width: 3.75vmin;
+    height: 4.25vmin;
+    background: radial-gradient(circle at 60% 50%, #000 1.15vmin, #fff0 calc(1.15vmin + 1px)), #fff;
+    border-radius: 100%;
+    top: 5vmin;
+    left: 2.15vmin;
+}
+
+.bat-head::after {
+    transform: rotate(10deg) rotateY(180deg);
+    left: 8vmin;
+}
+/* CSS for the bat's ears */
+.ears {
+    width: 18.25vmin;
+    height: 15vmin;
+    left: 31vmin;
+    top: 2vmin;
+}
+.ears:before,
+.ears:after {
+    content: "";
+    position: absolute;
+    width: 13vmin;
+    height: 13vmin;
+    left: -2.1vmin;
+    top: 1.5vmin;
+    background: var(--black);
+    border-radius: 0.5vmin 100%;
+    box-shadow: 1.25vmin -0.2vmin 0 0 var(--gray) inset;
+}
+.ears:after {
+    left: 7vmin;
+    transform: rotate(69deg) skew(-5deg, -5deg);
+    box-shadow: 0.125vmin -1.5vmin 0 0 var(--gray) inset;
+}
+/* CSS for the bat's wings */
+.wings {
+    width: 80vmin;
+    height: 40vmin;
+}
+/* CSS for the bat's individual Wing */
+.wing {
+    background: #ffc10700;
+    width: 40vmin;
+    height: 23vmin;
+    top: 8vmin;
+    transform-origin: 90% 60%;
+    animation: fly-right 1.5s ease 0s infinite;
+}
+/* Keyframes for bat-cat right wings fly */
+@keyframes fly-right {
+    50% { 
+        transform: rotate(-25deg);
+     }    
+}
+/* CSS for the bat's  Wing
+ it selects the second .wing 
+and any subsequent .wing elements that are direct siblings.
+*/
+.wing + .wing {
+    transform: rotateY(180deg);
+    left: 7vmin;
+    animation-name: fly-left;
+}
+/* Keyframes for bat-cat left wings fly */
+@keyframes fly-left {
+    50% { transform: rotateY(180deg) rotate(-25deg); }  
+}
+/* CSS for the bat's bountry */
+.bountry {
+    border-radius: 3vmin 5vmin;
+    width: 0vmin;
+    height: 22vmin;
+    background: #f002;
+    transform: rotate(68deg);
+    top: -6vmin;
+    left: 11vmin;
+    border: 0.85vmin solid var(--black);
+    background: var(--black);
+    z-index: 2;
+}
+/* CSS for the bat's  bountry (outside border of wings)
+ it selects  subsequent .bountry elements that are direct siblings.
+*/
+.bountry + .bountry + .bountry + .bountry {
+    transform: rotate(-50deg);
+    top: -3.75vmin;
+    left: 29vmin;
+    height: 23vmin;
+}
+/* Hover effect to modify bat's wing on hover */
+.bat-cat:hover .wing {
+    animation: stop-fly 1.5s ;
+    animation-fill-mode: forwards;
+}
+/* Keyframes for bat-cat Stop fly(on hover) */
+@keyframes stop-fly {
+   100% { transform: rotateY(90deg); }
+}
+/* Hover effect to modify bat's body movement */
+.bat-cat:hover .bat-body {
+    border-radius: 5vmin 100%;
+    top: 16vmin;
+    border-radius: 8vmin 100%;
+    top: 16.5vmin;
+}
+/* CSS for the bat's boundry(wings inside content )  */
+.wings-bountry {
+    background: radial-gradient(circle at 38% 126%, #fff0 10vmin, var(--dark) calc(10vmin + 1px));
+    width: 13vmin;
+    height: 20vmin;
+    transform: rotate(30deg);
+    left: 4vmin;
+    top: -3vmin;
+    clip-path: polygon(100% 0%, 0% 80%, 100% 90%);
+}
+
+.wings-bountry + .wings-bountry { 
+    left: 16vmin;
+    transform: rotate(30deg) rotateY(180deg);
+    top: 3.5vmin;
+}
+
+.wings-bountry + .wings-bountry + .wings-bountry {
+    left: 24.5vmin;
+    transform: rotate(-12deg) rotateY(180deg);
+    top: 2.5vmin;
+    }
+/* CSS for the bat's leg  */
+.bat-leg {
+    width: 2vmin;
+    height: 5vmin;
+    background: var(--black);
+    top: 35vmin;
+    left: 37vmin;
+    transform: rotate(15deg);
+    border-radius: 1vmin 2vmin;
+    box-shadow: 0.75vmin 0 0 0 var(--gray) inset;
+    transition: all 0.4s ease 0.25s;
+}
+/* CSS for the bat's leg  */
+.bat-leg + .bat-leg {
+    left: 41vmin;
+    border-radius: 2vmin 1vmin;
+    transform: rotate(-13deg);
+}
+/* CSS for the bat's leg  */
+.bat-cat:hover .bat-leg {
+    width: 6vmin;
+    border-radius: 2.5vmin;
+    border-radius: 1vmin 1vmin 2.5vmin 2.5vmin;
+    left: 34vmin;
+    top: 32.5vmin;
+    transform: rotate(5deg);
+}
+/* Hover effect to modify bat's body movement on leg */
+.bat-cat:hover .bat-leg {
+    left: 41vmin;
+    transform: rotate(-5deg);
+}
+
+/* CSS for the bat's tail  */
+.tail {
+    width: 10vmin;
+    height: 11vmin;
+    border-radius: 1vmin 9vmin;
+    left: 30vmin;
+    top: 24vmin;
+    transform: rotate(23deg);
+    transform-origin: 100% 100%;
+    border: 1vmin solid #fff0;
+    border-bottom: 1vmin solid var(--dark);
+    border-left: 1.55vmin solid var(--dark);
+    transition: all 0.4s ease 0.25s;
+}
+/* Hover effect to modify bat's tail movement on hover */
+.bat-cat:hover .tail {
+    left: 25vmin;
+    animation: tail-move 3s ease 0s infinite alternate;
+}
+/* Keyframes for bat-cat tail move */
+@keyframes tail-move {
+    20% { transform: rotate(21deg); }
+    72% { transform: rotate(25deg); }   
+}
